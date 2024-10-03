@@ -16,14 +16,22 @@ def playGame():
         user = user.lower()
 
         if user == 'quit':
-            print("You chose to quit the game. Goodbye!")
-            return None, None, None
+            while True:
+                isQuit = str(input("Are you sure? Would you like to play another round?"))
+
+                if isQuit == 'no' or isQuit == 'n':
+                    print("You chose to quit the game. Goodbye!")
+                    return None, None, None
+                elif isQuit == 'yes' or 'yes':
+                    print("Enjoy The Game!")
+                    break
+
     
         # Check if user input is correct
         if user == 'r' or user == 'p' or user == 's' or user == 'rock' or user == 'paper' or user == 'scissor':
             break  
         else:
-            print("Invalid input. Please enter 'r', 'p', or 's'. Or Rock Paper Scissor")
+            print("Please enter 'r', 'p', or 's'. Or Rock Paper Scissor")
 
 
 
