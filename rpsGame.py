@@ -9,7 +9,7 @@ import math
 
 #Getting user input and computer choice
 def playGame():
-    user = str(input("Choose Your Weapon: 'r' for ROCKZ! - 'p' for PAPERZ! - 's' for SCISSORZ!\n"))
+    user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!\n"))
     user = user.lower()
 
 
@@ -40,11 +40,11 @@ def playGame():
 #Check if the player won
 def win(player, enemy):
 
-    if player == 'r' and enemy == 's':
+    if player == 'r' or player == 'rock' and enemy == 's':
         return True
-    elif player == 's' and enemy == 'p':
+    elif player == 's' or player =='scissors' and enemy == 'p':
         return True
-    elif player == 'p' and enemy == 'r':
+    elif player == 'p' or player == 'paper' and enemy == 'r':
         return True
     
     return False
@@ -54,7 +54,8 @@ def bestOf(x):
     winsPlayer = 0
     winsComputer = 0
     necWin = math.ceil(x/2)
-    while winsPlayer < necWin or winsComputer < necWin:
+    print(necWin)
+    while winsPlayer < necWin and winsComputer < necWin:
         result, user, compFinal = playGame()
         #Its a tie
         if result == 0:
@@ -67,9 +68,20 @@ def bestOf(x):
             print('You chose {} and the computer chose {} ! You lost!\n'.format(user, compFinal))
         
         if winsPlayer > winsComputer:
-            print("You have won the best of {} games! Congrats!".format(x))
+            print("You have won!")
+            print(f"Your Score is {winsPlayer}!")
+            print(f"The computers score is {winsComputer}!")
+   
+        elif winsComputer > winsPlayer:
+            print("You have lost!")
+            print(f"Your Score is {winsPlayer}!")
+            print(f"The computers score is {winsComputer}!")
+    
         else:
-            print("The machine has won best out of {} games! You lost!".format(x))
+            print("It is a tie!")
+    
+
+            
 
 
 #Welcome Message
