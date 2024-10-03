@@ -1,7 +1,10 @@
 #Ramie Mosely Rock Papers Scissors In Python
-#Importing Modules
-#
+#PROG10004
+
+
+#Importing Random Module
 import random
+#Importing Math Module
 import math
 
 
@@ -64,7 +67,7 @@ def playGame():
 
 
 
-#Check if the player won
+#Check if the user won
 def win(player, enemy):
 
     if player == 'r' or player == 'rock' and enemy == 's':
@@ -126,13 +129,17 @@ print("Welcome to Ramies Python Rock Paper Scissors Game!")
 print("####################################################")
 print()
 
+#Get and check number of rounds user wants to play
 numOfRounds = int(input("How many rounds would you like to play?\n"))
 while numOfRounds < 1:
     print("Please enter a valid number of rounds!")
     numOfRounds = int(input("How many rounds would you like to play?\n"))
 
 
+#Calling main game loop
 bestOf(numOfRounds)
+
+#Exit message
 print('Thanks for playing!')
 
 
