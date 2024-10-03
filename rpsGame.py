@@ -7,24 +7,23 @@ import math
 
 #Getting user input and computer choice
 def playGame():
-    user = ''
-    print("###################################################################################")
-    user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!\n###################################################################################\n"))
+    #Input Validation Loop
+    while True:
+        user = ''
+        print("###################################################################################")
+        user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!\n###################################################################################\n"))
 
-    user = user.lower()
+        user = user.lower()
 
-    if user == 'quit':
-        print("You chose to quit the game. Goodbye!")
-        return None, None, None
-
-
-
-    #Check if valid input
-    #if user != 'r' and user != 's' and user != 'p':
-        #user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!"))
-        #print("Please enter valid input")
-        #user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!"))
-        #user = user.lower()
+        if user == 'quit':
+            print("You chose to quit the game. Goodbye!")
+            return None, None, None
+    
+        # Check if user input is correct
+        if user == 'r' or user == 'p' or user == 's' or user == 'rock' or user == 'paper' or user == 'scissor':
+            break  
+        else:
+            print("Invalid input. Please enter 'r', 'p', or 's'. Or Rock Paper Scissor")
 
 
 
