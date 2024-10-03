@@ -5,12 +5,27 @@ import math
 
 
 
-
-
 #Getting user input and computer choice
 def playGame():
-    user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!\n"))
+    user = ''
+    print("###################################################################################")
+    user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!\n###################################################################################\n"))
+
     user = user.lower()
+
+    if user == 'quit':
+        print("You chose to quit the game. Goodbye!")
+        return None, None, None
+
+
+
+    #Check if valid input
+    #if user != 'r' and user != 's' and user != 'p':
+        #user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!"))
+        #print("Please enter valid input")
+        #user = str(input("Choose Your Weapon: 'r' for ROCK! - 'p' for PAPER! - 's' for SCISSOR!"))
+        #user = user.lower()
+
 
 
 
@@ -31,9 +46,13 @@ def playGame():
         return (0, user, compFinal) 
     
     if win(user,compFinal):
-        return (1, user, compFinal) 
+        return (1, user, compFinal)
+ 
     
-    return (-1, user, compFinal) 
+    return (-1, user, compFinal)
+    
+    
+
 
 
 
@@ -54,15 +73,24 @@ def bestOf(x):
     winsPlayer = 0
     winsComputer = 0
     necWin = math.ceil(x/2)
-    print(necWin)
+    print(f"You must win {necWin} rounds to beat the computer!\n")
     while winsPlayer < necWin and winsComputer < necWin:
         result, user, compFinal = playGame()
+
+
+        # Check if user quit the game
+        if result is None:
+            return 
+
+
         #Its a tie
         if result == 0:
             print('It is a tie. You and the computer both chose {}.\n'.format(user))
         elif result == 1:
             winsPlayer +=1
             print('You chose {} and the computer chose {} ! You won!\n'.format(user, compFinal))
+
+
         else:
             winsComputer +=1
             print('You chose {} and the computer chose {} ! You lost!\n'.format(user, compFinal))
@@ -91,7 +119,12 @@ print("####################################################")
 print()
 
 numOfRounds = int(input("How many rounds would you like to play?\n"))
+while numOfRounds < 1:
+    print("Please enter a valid number of rounds!")
+    numOfRounds = int(input("How many rounds would you like to play?\n"))
+
 
 bestOf(numOfRounds)
+print('Thanks for playing!')
 
 
