@@ -9,8 +9,10 @@ import math
 
 #Getting user input and computer choice
 def playGame():
-    user = input("Choose Your Weapon: 'r' for ROCKZ! - 'p' for PAPERZ! - 's' for SCISSORZ!\n")
+    user = str(input("Choose Your Weapon: 'r' for ROCKZ! - 'p' for PAPERZ! - 's' for SCISSORZ!\n"))
     user = user.lower()
+
+
 
 
     #Computer Choice
@@ -26,12 +28,12 @@ def playGame():
     
     #Check if tie
     if user == compFinal:
-        return "You and the computer have both chosen {}. It is a tie".format(compFinal) 
+        return (0, user, compFinal) 
     
     if win(user,compFinal):
-        return "You have chosen {} and the computer has chosen {}. You won!".format(user, compFinal)
+        return (1, user, compFinal) 
     
-    return "You chose {} and the computer chose {}. You lose!".format(user, compFinal)
+    return (-1, user, compFinal) 
 
 
 
@@ -45,14 +47,39 @@ def win(player, enemy):
     elif player == 'p' and enemy == 'r':
         return True
     
-    else:
-        return False
+    return False
+
+#Game Rounds To Win
+def bestOf(x):
+    winsPlayer = 0
+    winsComputer = 0
+    necWin = math.ceil(x/2)
+    while winsPlayer < necWin or winsComputer < necWin:
+        result, user, compFinal = playGame()
+        #Its a tie
+        if result == 0:
+            print('It is a tie. You and the computer both chose {}.\n'.format(user))
+        elif result == 1:
+            winsPlayer +=1
+            print('You chose {} and the computer chose {} ! You won!\n'.format(user, compFinal))
+        else:
+            winsComputer +=1
+            print('You chose {} and the computer chose {} ! You lost!\n'.format(user, compFinal))
+        
+        if winsPlayer > winsComputer:
+            print("You have won the best of {} games! Congrats!".format(x))
+        else:
+            print("The machine has won best out of {} games! You lost!".format(x))
 
 
 #Welcome Message
-print("Welcome to Ramies Python Rock Paper Scissors Game!\n")
+print("####################################################")
+print("Welcome to Ramies Python Rock Paper Scissors Game!")
+print("####################################################")
+print()
 
-mainGame = playGame()
+numOfRounds = int(input("How many rounds would you like to play?\n"))
 
-print(mainGame)
+bestOf(numOfRounds)
+
 
