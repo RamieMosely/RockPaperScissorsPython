@@ -3,6 +3,10 @@
 import random
 import math
 
+
+
+
+
 #Getting user input and computer choice
 def playGame():
     user = input("Choose Your Weapon: 'r' for ROCKZ! - 'p' for PAPERZ! - 's' for SCISSORZ!")
@@ -19,6 +23,7 @@ def playGame():
     else:
         compFinal = 's'
 
+    #Check if tie
     if user == compFinal:
         return "You and the computer have both chosen {}. It is a tie".format(compFinal) 
     
@@ -30,4 +35,7 @@ def playGame():
 #Check if the player won
 def win(player, enemy):
 
+    return
 
+#Welcome Message
+print("Welcome to Ramies Python Rock Paper Scissors Game!\n")
