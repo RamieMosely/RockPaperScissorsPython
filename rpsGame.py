@@ -70,11 +70,11 @@ def playGame():
 #Check if the user won
 def win(player, enemy):
 
-    if player == 'r' or player == 'rock' and enemy == 's':
+    if (player == 'r' or player == 'rock') and enemy == 's':
         return True
-    elif player == 's' or player =='scissors' and enemy == 'p':
+    elif (player == 's' or player =='scissors') and enemy == 'p':
         return True
-    elif player == 'p' or player == 'paper' and enemy == 'r':
+    elif (player == 'p' or player == 'paper') and enemy == 'r':
         return True
     
     return False
